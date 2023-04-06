@@ -4,8 +4,60 @@
         <title>Password Generator</title>
         <link rel="stylesheet" type="text/css" href="styles.css">
         <script src="script.js" async></script>
+        <script src="https://kit.fontawesome.com/0e8fa86f7b.js" crossorigin="anonymous"></script>
     </head>
+    <noscript>
+        <p>
+            I'm sorry, but this website needs JavaScript to run. Please
+            enable it in your browser settings.
+        </p>
+        <a href="https://activatejavascript.org/en/instructions/ios#instructions">
+            <p>I don't know how to enable Javascript</p>
+        </a>
+    </noscript>
     <body>
-        <h1>Password Generator</h1>
+        <nav>
+            <p>Hello, Truschenko!</p>
+            <div>
+                <i class="fa-solid fa-user"></i>
+                <p>Your account</p>
+            </div>
+            <div>
+                <i class="fa-solid fa-gear"></i>
+                <p>Settings</p>
+            </div>
+        </nav>
+        <main>
+            <h1>Password Generator</h1>
+            <section id="options">
+                <div>
+                    <p>Quantity</p>
+                    <input type="number" min="1" max="99" value="1" id="quantityInput">
+                    <i class="fa-solid fa-circle-question" ></i>
+                </div>
+                <div>
+                    <p>Length</p>
+                    <input type="number" min="1" max="99" value="10" id="lengthInput">
+                    <i class="fa-solid fa-circle-question"></i>
+                </div>
+                <div>
+                    <button id="generatePassword" class="appButton">Generate password</button>
+                </div>
+            </section>
+            <section id="result">
+
+            </section>
+            <section id="utilities">
+                <button id="copyPassword" class="appButton">Copy</button>
+            </section>
+        </main>
+        <div id="notifications">
+            <i class="fa-solid fa-circle-check"></i>
+            <p>Password(s) copied!</p>
+        </div>
+        <footer>
+            <p>GitHub repository</p>
+            <p>Report issues</p>
+        </footer>
     </body>
 </html>
