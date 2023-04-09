@@ -68,20 +68,20 @@ const generatePasswords = () => {
             }
         } else {
             lengthInput.style.border = "2px solid red";
-            error.innerHTML = "Insert a length value between 1 and 149."
+            error.innerHTML = "Insert a length value between 1 and 149.";
         }
     } else {
         quantityInput.style.border = "2px solid red";
-        error.innerHTML = "Insert a quantity value between 1 and 99."
+        error.innerHTML = "Insert a quantity value between 1 and 99.";
         if (length < 1 || length > 149) {
             lengthInput.style.border = "2px solid red";
-            error.innerHTML = "Insert a quantity value between 1 and 99, and a length value between 1 and 149."
+            error.innerHTML = "Insert a quantity value between 1 and 99, and a length value between 1 and 149.";
         }
     }
 }
 generatorButton.addEventListener("click", generatePasswords);
 document.addEventListener("keypress", (e) => {
-    if (e.key == "g") {
+    if (e.key == "Enter") {
         generatorButton.click();
     }
 })

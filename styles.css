@@ -428,6 +428,11 @@ footer button:active {
 #settingsContainer button.not-customizable {
     opacity: 0.7;
 }
+
+#settingsContainer #closeSettings {
+    margin-top: 15px;
+}
+
 /* To remove the arrows in the "quantity" and "length" inputs
 Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
