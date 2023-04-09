@@ -18,7 +18,7 @@
 }
 
 html {
-    font-family: Poppins;
+    font-family: -apple-system, BlinkMacSystemFont, Poppins, system-ui;
     color: var(--text);
 }
 
