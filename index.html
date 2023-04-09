@@ -17,47 +17,76 @@
     </noscript>
     <body>
         <nav>
-            <p>Hello, Truschenko!</p>
-            <div>
-                <i class="fa-solid fa-user"></i>
-                <p>Your account</p>
+            <div id="left">
+                <h1>Password Generator</h1>
             </div>
-            <div>
-                <i class="fa-solid fa-gear"></i>
-                <p>Settings</p>
+            <div id="right">
+                <div>
+                    <i class="fa-solid fa-bug"></i>
+                    <p>Report a bug</p>
+                </div>
+                <div>
+                    <i class="fa-solid fa-gear"></i>
+                    <p>Settings</p>
+                </div>
             </div>
         </nav>
         <main>
-            <h1>Password Generator</h1>
-            <section id="options">
-                <div>
-                    <p>Quantity</p>
-                    <input type="number" min="1" max="99" value="1" id="quantityInput">
-                    <i class="fa-solid fa-circle-question" ></i>
-                </div>
-                <div>
-                    <p>Length</p>
-                    <input type="number" min="1" max="99" value="10" id="lengthInput">
-                    <i class="fa-solid fa-circle-question"></i>
-                </div>
-                <div>
-                    <button id="generatePassword" class="appButton">Generate password</button>
-                </div>
-            </section>
-            <section id="result">
+            <section id="firstRow">
+                <section id="baseOptions">
+                    <h2>Base Settings</h2>
 
+                    <label for="quantity">Quantity</label>
+                    <input type="number" min="1" max="99" name="quantity" id="quantityInput" value="25">
+
+                    <label for="length">Length</label>
+                    <input type="number" min="1" max="150" name="length" id="lengthInput" value="15">
+                </section>
+                <section id="includeOptions">
+                    <h2>Include:</h2>
+
+                    <div>
+                        <input type="checkbox" name="uppercase" id="uppercaseCheckbox" checked>
+                        <label for="uppercase">Uppercase</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="lowercase" id="lowercaseCheckbox" checked>
+                        <label for="lowercase">Lowercase</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="numbers" id="numbersCheckbox" checked>
+                        <label for="numbers">Numbers</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="symbols" id="symbolsCheckbox" checked>
+                        <label for="symbols">Symbols</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" name="separators" id="separatorsCheckbox">
+                        <label for="separators">Separators</label>
+                    </div>
+                </section>
+                <!-- <section id="excludeOptions">
+                    <h2>Exclude:</h2>
+
+                    <div>
+                        <input type="checkbox" name="unusualcharacters">
+                        <label for="unusualcharacters">Unusual Characters</label>
+                    </div>
+                </section> -->
             </section>
-            <section id="utilities">
-                <button id="copyPassword" class="appButton">Copy</button>
+            <section id="generate">
+                <button id="generatePassword">Generate password</button>
+            </section>
+            <section id="passwords">
+                <h2>Your Password:</h2>
+                <div>
+                    <button id="copy">Copy Password</button>
+                    <button id="hide">Hide Password</button>
+                    <button id="clear">Clear Password</button>
+                </div>
+                <section id="result"></section>
             </section>
         </main>
-        <div id="notifications">
-            <i class="fa-solid fa-circle-check"></i>
-            <p>Password(s) copied!</p>
-        </div>
-        <footer>
-            <p>GitHub repository</p>
-            <p>Report issues</p>
-        </footer>
     </body>
 </html>

@@ -1,18 +1,36 @@
+:root {
+    --accent: #0071f2;
+    --secondary: #fd9900;
+    --success: #64bc26;
+    --error: #ea1601;
+    --warning: #fad202;
+    --background: #f5faff;
+    --foreground: #e4e8ee;
+    --text: #001833;
+}
+
 html {
     font-family: system-ui;
+    color: var(--text);
 }
 
 body {
+    background-color: var(--background);
     margin: 0;
 }
+
+h1 {
+    font-size: 1.5rem;
+}
+
 
 nav {
     display: flex;
     height: 50px;
-    background-color: #eee;
+    width: 100%;
+    background-color: var(--foreground);
 
     align-items: center;
-    justify-content: space-around;
 }
 
 nav div {
@@ -21,114 +39,144 @@ nav div {
 }
 
 nav div i {
-    margin-right: 5px;
+    margin: 0 10px;
+    font-size: 1.3rem;
 }
+
+nav #left {
+    width: 50%;
+    justify-content: left;
+    padding-left: 15px;
+}
+
+nav #right {
+    width: 50%;
+    justify-content: right;
+    padding-right: 15px;
+}
+
+nav #right div {
+    margin: 0 10px;
+}
+
 
 main {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
-#options div {
+main section {
+    display: flex;
+    flex-direction: column;
+}
+
+#firstRow {
     display: flex;
     flex-direction: row;
+
+    width: 100%;
+    padding: 0 20px;
+    margin: 10px;
+}
+
+#baseOptions, #includeOptions, #excludeOptions {
+    width: 50%;
+    height: fit-content;
+    margin: 5px 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-#options div input {
-    height: 20px;
-    width: 50px;
+#baseOptions input {
+    outline: none;
+
+    height: 1.8rem;
+    width: 50%;
+    border: 1px solid rgb(230, 230, 230);
+    border-radius: 7px;
+    margin: 5px 0 10px 0;
     text-align: center;
+
+    font-size: 1.2rem;
+    transition: 100ms linear;
+}
+
+#baseOptions input:focus {
+    border: 2px solid var(--accent);
+}
+
+#passwords, #generate {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+main button {
     font-size: 1rem;
-    margin: auto 15px;
+    background-color: var(--background);
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: 0 5px;
+    padding: 0 10px;
+    height: 1.8rem;
+    width: fit-content;
+    transition: 100ms linear;
 }
 
-#options div i {
-    opacity: 0.2;
-    transition: 200ms linear;
+main button:hover, #copy:hover {
+    cursor: pointer;
+    background-color: var(--accent);
+    color: white;
+    font-weight: bold;
+    transition: 100ms linear;
 }
 
-#options div i:hover {
-    opacity: 1;
-    transition: 200ms linear;
+main button:active {
+    cursor: pointer;
+    scale: 0.9;
+    transition: 30ms linear;
 }
 
+#result {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin: 20px;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+#result h3 {
+    margin: 3px 10px;
+    transition: 50ms linear;
+}
+
+#result h3:hover {
+    color: var(--accent);
+    cursor: pointer;
+    transition: 50ms linear;
+}
+
+#result h3:active {
+    scale: 0.9;
+    transition: 50ms linear;
+}
+
+
+/* To remove the arrows in the "quantity" and "length" inputs
+Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
+/* Firefox */
 input[type=number] {
-    -moz-appearance: textfield;
-}
-
-#result {
-    text-align: center;
-    margin-top: 30px;
-    max-height: 50vh;
-    overflow-y: auto;
-}
-
-#generatePassword, #copyPassword {
-    margin-top: 10px;
-}
-
-footer {
-    display: flex;
-    position: absolute;
-    top: calc(100vh - 50px);
-}
-
-footer p {
-    margin: 0 10px;
-}
-
-button {
-    font-size: 1rem;
-}
-
-.appButton {
-    padding: 5px 10px;
-    border-radius: 8px;
-    border: 1px solid #eee;
-    background-color: rgb(245, 245, 245);
-    margin: 5px;
-
-    transition: 50ms linear;
-}
-
-.appButton:hover {
-    cursor: pointer;
-    border: 2px solid #0071F2;
-    
-    transition: 50ms linear;
-}
-
-.appButton:active {
-    cursor: pointer;
-    scale: 0.95;
-
-    transition: 50ms linear;
-}
-
-#notifications {
-    position: absolute;
-    top: 70px;
-    right: 20px;
-    
-    display: none;
-    align-items: center;
-    background-color: #64CD26;
-    color: white;
-
-    padding: 0 20px;
-    border-radius: 15px;
-
-}
-
-#notifications i {
-    margin-right: 10px;
-    scale: 1.3;
+  -moz-appearance: textfield;
 }
