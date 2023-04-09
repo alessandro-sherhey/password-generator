@@ -17,12 +17,20 @@ html {
 body {
     background-color: var(--background);
     margin: 0;
+    overflow: hidden;
 }
 
 h1 {
     font-size: 1.5rem;
 }
 
+a {
+    text-decoration: none;
+}
+
+.underline {
+    text-decoration: underline;
+}
 
 nav {
     display: flex;
@@ -39,17 +47,17 @@ nav div {
 }
 
 nav div i {
-    margin: 0 10px;
+    margin-right: 10px;
     font-size: 1.3rem;
 }
 
-nav #left {
+#nav-left {
     width: 50%;
     justify-content: left;
     padding-left: 15px;
 }
 
-nav #right {
+#nav-right {
     width: 50%;
     justify-content: right;
     padding-right: 15px;
@@ -59,6 +67,32 @@ nav #right div {
     margin: 0 10px;
 }
 
+nav div button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    padding: 0;
+    height: 30px;
+    margin: 0 15px;
+    padding: 0 15px;
+
+    transition: 50ms linear;
+}
+
+nav button:hover {
+    cursor: pointer;
+    font-weight: bold;
+
+    transition: 50ms linear;
+}
+
+nav button:active {
+    scale: 0.9;
+
+    transition: 50ms linear;
+}
 
 main {
     display: flex;
@@ -142,6 +176,10 @@ main button:active {
     transition: 30ms linear;
 }
 
+#passwords {
+    margin-top: 20px;
+}
+
 #result {
     display: flex;
     flex-direction: row;
@@ -150,6 +188,7 @@ main button:active {
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 }
 
 #result h3 {
@@ -168,6 +207,63 @@ main button:active {
     transition: 50ms linear;
 }
 
+footer {
+    display: flex;
+    height: 50px;
+    width: 100%;
+    align-items: center;
+    background-color: var(--foreground);
+    position: absolute;
+    top: calc(100vh - 50px);
+    padding: 0 20px;
+    text-align: center;
+}
+
+footer button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    font-size: 1rem;
+    padding: 0;
+    height: 30px;
+    margin: 0 15px;
+    padding: 0 15px;
+
+    transition: 50ms linear;
+}
+
+footer i {
+    margin: 0 10px;
+    font-size: 1.3rem;
+}
+
+footer button:hover {
+    cursor: pointer;
+    font-weight: bold;
+
+    transition: 50ms linear;
+}
+
+footer button:active {
+    scale: 0.9;
+
+    transition: 50ms linear;
+}
+
+#footer-left {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 70%;
+}
+
+#footer-right {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    width: calc(30% - 20px);
+}
 
 /* To remove the arrows in the "quantity" and "length" inputs
 Chrome, Safari, Edge, Opera */

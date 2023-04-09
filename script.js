@@ -93,7 +93,7 @@ hideButton.addEventListener("click", () => {
     }
 })
 document.addEventListener("keypress", (e) => {
-    if (e.key == ' ') {
+    if (e.key == 'h') {
         hideButton.click();
     }
 })
@@ -123,7 +123,7 @@ const changeCopyButton = () => {
             copyButton.innerHTML = "Nothing to copy!";
         }
         copyButtonState = 1;
-        setTimeout(changeCopyButton, 3000);
+        setTimeout(changeCopyButton, 2000);
     } else if (copyButtonState == 1){
         copyButton.style.backgroundColor = "var(--background)";
         copyButton.style.color = "black";
