@@ -42,6 +42,7 @@ let activeSections = 1;
 let hiddenStatus = false;
 let tempResult = "";
 let copyButtonState = 0;
+const darkMode = window.matchMedia("(prefers-color-scheme:dark)").matches;
 
 // Initializers for localStorage
 if (localStorage.getItem("include")) {
@@ -226,9 +227,14 @@ const changeCopyButton = () => {
         copyButtonState = 1;
         setTimeout(changeCopyButton, 2000);
     } else if (copyButtonState == 1){
-        copyButton.style.backgroundColor = "var(--background)";
-        copyButton.style.color = "black";
         copyButton.innerHTML = "Copy Passwords";
+        if (darkMode == true) {
+            copyButton.style.backgroundColor = "var(--dark-grey)";
+            copyButton.style.color = "var(--text-dark)";
+        } else {
+            copyButton.style.backgroundColor = "var(--background)";
+            copyButton.style.color = "black";
+        }
         copyButtonState = 0;
     }
 }
