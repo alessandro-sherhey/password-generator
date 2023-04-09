@@ -3,6 +3,7 @@
     <head>
         <title>Password Generator</title>
         <link rel="stylesheet" type="text/css" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <script src="script.js" async></script>
         <script src="https://kit.fontawesome.com/0e8fa86f7b.js" crossorigin="anonymous"></script>
     </head>
@@ -19,6 +20,7 @@
         <nav>
             <div id="nav-left">
                 <h1>Password Generator</h1>
+                <p id="animate">PREVIEW</p>
             </div>
             <div id="nav-right">
                 <a href="https://github.com/alessandro-sherhey/password-generator/issues/new">
@@ -27,7 +29,7 @@
                         <p class="underline">Report a bug</p>
                     </button>
                 </a>
-                <button>
+                <button id="openSettings">
                     <i class="fa-solid fa-gear"></i>
                     <p>Settings</p>
                 </button>
@@ -45,7 +47,7 @@
                     <input type="number" min="1" max="150" name="length" id="lengthInput" value="15">
                 </section>
                 <section id="includeOptions">
-                    <h2>Include:</h2>
+                    <h2>Include</h2>
 
                     <div>
                         <input type="checkbox" name="uppercase" id="uppercaseCheckbox" checked>
@@ -92,7 +94,11 @@
         </main>
         <footer>
             <div id="footer-left">
-                <p>Made by Alessandro Sherhey</p>
+                <p>Made by 
+                    <a href="https://alessandro-sherhey.github.io/alessandro-sherhey-website/" class="underline">
+                        Alessandro Sherhey
+                    </a>
+                </p>
                 <a href="https://github.com/alessandro-sherhey">
                     <button>
                         <i class="fa-brands fa-github"></i>
@@ -115,5 +121,31 @@
                 </a>
             </div>
         </footer>
+        <section id="settings">
+            <div id="settingsContainer">
+                <h2>Settings</h2>
+                <p class="reducedOpacity">These settings will be saved in your browser's storage</p>
+                <div class="settingsGroup">
+                    <h3>Language</h3>
+                    <div class="buttonGroup">
+                        <button class="active">English</button>
+                        <button>Italian</button>
+                    </div>
+                </div>
+                <div class="settingsGroup">
+                    <h3>Sections</h3>
+                    <!-- <p class="reducedOpacity italic">the coloured buttons represent which sections are shown</p> -->
+                    <div class="buttonGroup">
+                        <button class="active not-customizable">Base Settings</button>
+                        <button class="active">Include</button>
+                        <button class="not-customizable">Exclude</button>
+                        <button class="not-customizable">Strength Meter</button>
+                        <button class="active">Result</button>
+                        <button class="active">Footer</button>
+                    </div>
+                </div>
+                <button id="closeSettings">Close</button>
+            </div>
+        </section>
     </body>
 </html>

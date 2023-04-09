@@ -1,3 +1,9 @@
+const openSettingsButton = document.getElementById("openSettings");
+const closeSettingsButton = document.getElementById("closeSettings");
+const settingsBackground = document.getElementById("settings");
+const settingsContainer = document.getElementById("settingsContainer");
+let settingsStatus = 0;
+
 const quantityInput = document.getElementById("quantityInput");
 const lengthInput = document.getElementById("lengthInput");
 const resultZone = document.getElementById("result");
@@ -134,5 +140,30 @@ const changeCopyButton = () => {
 document.addEventListener("keypress", (e) => {
     if (e.key == "c") {
         copyButton.click();
+    }
+})
+
+
+const openSettings = () => {
+    settingsBackground.style.display = "flex";
+    settingsContainer.style.display = "flex";
+    settingsStatus = 1;
+}
+openSettingsButton.addEventListener("click", openSettings);
+
+const closeSettings = () => {
+    settingsBackground.style.display = "none";
+    settingsContainer.style.display = "flex";
+    settingsStatus = 0;
+}
+closeSettingsButton.addEventListener("click", closeSettings);
+
+document.addEventListener("keypress", (e) => {
+    if (e.key == 's') {
+        if (settingsStatus == 0) {
+            openSettings();
+        } else if (settingsStatus == 1) {
+            closeSettings();
+        }
     }
 })

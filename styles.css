@@ -7,6 +7,8 @@
     --background: #f5faff;
     --foreground: #e4e8ee;
     --text: #001833;
+
+    --white: #ffffff;
 }
 
 html {
@@ -24,12 +26,32 @@ h1 {
     font-size: 1.5rem;
 }
 
+#animate {
+    font-size: 1rem;
+    color: var(--white);
+    background-color: var(--error);
+    padding: 3px 5px;
+    margin: 0 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    animation: preview-animation 2.0s ease-in-out infinite;
+}
+
 a {
     text-decoration: none;
+    color: var(--text);
 }
 
 .underline {
     text-decoration: underline;
+}
+
+.reducedOpacity {
+    opacity: 0.75;
+}
+
+.italic {
+    font-style: italic;
 }
 
 nav {
@@ -207,6 +229,10 @@ main button:active {
     transition: 50ms linear;
 }
 
+#result i {
+    font-size: 1.4rem;
+}
+
 footer {
     display: flex;
     height: 50px;
@@ -217,6 +243,10 @@ footer {
     top: calc(100vh - 50px);
     padding: 0 20px;
     text-align: center;
+}
+
+footer p {
+    margin-right: 20px;
 }
 
 footer button {
@@ -265,6 +295,102 @@ footer button:active {
     width: calc(30% - 20px);
 }
 
+
+#settings {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 1;
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+}
+
+#settingsContainer {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--white);
+    padding: 30px;
+    border: 2px solid var(--text);
+    border-radius: 20px;
+}
+
+#settingsContainer h2 {
+    margin-bottom: 0;
+}
+
+#settingsContainer p {
+    margin: 0;
+}
+
+#settingsContainer p.reducedOpacity {
+    margin-top: 10px;
+}
+
+#settingsContainer button {
+    font-size: 1rem;
+    background-color: var(--background);
+    border: 1px solid grey;
+    border-radius: 5px;
+    margin: 0 5px;
+    padding: 0 10px;
+    height: 1.8rem;
+    width: fit-content;
+    transition: 100ms linear;
+}
+
+#settingsContainer button:hover{
+    cursor: pointer;
+    background-color: var(--accent);
+    color: white;
+    font-weight: bold;
+    transition: 100ms linear;
+}
+
+#settingsContainer button:active {
+    cursor: pointer;
+    scale: 0.9;
+    transition: 30ms linear;
+}
+
+#settingsContainer .settingsGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px 0;
+}
+
+#settingsContainer div h3 {
+    margin: 10px 0;
+}
+
+#settingsContainer .buttonGroup {
+    display: flex;
+    flex-direction: row;
+}
+
+#settingsContainer button.active {
+    background-color: var(--accent);
+    color: white;
+}
+
+#settingsContainer button.not-customizable:hover {
+    cursor: not-allowed;
+}
+
+#settingsContainer button.not-customizable {
+    opacity: 0.7;
+}
+
 /* To remove the arrows in the "quantity" and "length" inputs
 Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -275,4 +401,19 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+
+@keyframes preview-animation {
+    0% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 0.85;
+    }
+
+    100% {
+        scale: 1;
+    }
 }
