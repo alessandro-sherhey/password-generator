@@ -213,6 +213,10 @@ main button:active {
     transition: 30ms linear;
 }
 
+main #error {
+    color: var(--error);
+}
+
 #passwords {
     margin-top: 20px;
 }

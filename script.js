@@ -8,6 +8,7 @@ const quantityInput = document.getElementById("quantityInput");
 const lengthInput = document.getElementById("lengthInput");
 const resultZone = document.getElementById("result");
 const generatorButton = document.getElementById("generatePassword");
+const errorInfo = document.getElementById("error");
 
 const uppercaseCheckbox = document.getElementById("uppercaseCheckbox");
 const lowercaseCheckbox = document.getElementById("lowercaseCheckbox");
@@ -31,33 +32,51 @@ const generatePasswords = () => {
     let passwordCount = 0;
     let password = "";
     
-    if (uppercaseCheckbox.checked == true) {
-        chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    }
-    if (lowercaseCheckbox.checked == true) {
-        chars += "abcdefghijklmnopqrstuvwxyz";
-    }
-    if (numbersCheckbox.checked == true) {
-        chars += "0123456789";
-    }
-    if (symbolsCheckbox.checked == true) {
-        chars += "!@#$%^&*()";
-    }
+    lengthInput.style.border = "1px solid rgb(230, 230, 230)";
+    quantityInput.style.border = "1px solid rgb(230, 230, 230)";
+    error.innerHTML = "";
     
-    resultZone.innerHTML = "";
-    
-    while (passwordCount < quantity) {
-        for (let i = 1; i <= length + 1; i++) {
-            if ((separatorsCheckbox.checked == true) && (i % 6 == 0)) {
-                password += "-";
-            } else {
-                let randomNumber = Math.floor(Math.random() * chars.length);
-                password += chars.substring(randomNumber, randomNumber + 1);
+    if (quantity > 0 && quantity < 100) {
+        if (length > 0 && length < 150) {
+            if (uppercaseCheckbox.checked == true) {
+                chars += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
             }
+            if (lowercaseCheckbox.checked == true) {
+                chars += "abcdefghijklmnopqrstuvwxyz";
+            }
+            if (numbersCheckbox.checked == true) {
+                chars += "0123456789";
+            }
+            if (symbolsCheckbox.checked == true) {
+                chars += "!@#$%^&*()";
+            }
+            
+            resultZone.innerHTML = "";
+            
+            while (passwordCount < quantity) {
+                for (let i = 1; i <= length + 1; i++) {
+                    if ((separatorsCheckbox.checked == true) && (i % 6 == 0)) {
+                        password += "-";
+                    } else {
+                        let randomNumber = Math.floor(Math.random() * chars.length);
+                        password += chars.substring(randomNumber, randomNumber + 1);
+                    }
+                }
+                resultZone.innerHTML += `<h3>${password}</h3>`;
+                password = "";
+                passwordCount++;
+            }
+        } else {
+            lengthInput.style.border = "2px solid red";
+            error.innerHTML = "Insert a length value between 1 and 149."
         }
-        resultZone.innerHTML += `<h3>${password}</h3>`;
-        password = "";
-        passwordCount++;
+    } else {
+        quantityInput.style.border = "2px solid red";
+        error.innerHTML = "Insert a quantity value between 1 and 99."
+        if (length < 1 || length > 149) {
+            lengthInput.style.border = "2px solid red";
+            error.innerHTML = "Insert a quantity value between 1 and 99, and a length value between 1 and 149."
+        }
     }
 }
 generatorButton.addEventListener("click", generatePasswords);
