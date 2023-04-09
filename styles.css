@@ -12,7 +12,7 @@
 }
 
 html {
-    font-family: system-ui;
+    font-family: Poppins;
     color: var(--text);
 }
 
@@ -151,7 +151,7 @@ main section {
     margin: 10px;
 }
 
-#baseOptions, #includeOptions, #excludeOptions {
+#baseOptions, #includeOptions {
     width: 50%;
     height: fit-content;
     margin: 5px 10px;
@@ -160,6 +160,10 @@ main section {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+#includeOptions {
+    display: none;
 }
 
 #baseOptions input {
@@ -253,7 +257,7 @@ main #error {
 }
 
 footer {
-    display: flex;
+    display: none;
     height: 50px;
     width: 100%;
     align-items: center;

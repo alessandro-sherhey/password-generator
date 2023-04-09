@@ -1,30 +1,99 @@
+// Variables for the settings
 const openSettingsButton = document.getElementById("openSettings");
 const closeSettingsButton = document.getElementById("closeSettings");
 const settingsBackground = document.getElementById("settings");
 const settingsContainer = document.getElementById("settingsContainer");
 let settingsStatus = 0;
 
+// Variables for the main inputs and buttons
 const quantityInput = document.getElementById("quantityInput");
 const lengthInput = document.getElementById("lengthInput");
 const resultZone = document.getElementById("result");
 const generatorButton = document.getElementById("generatePassword");
 const errorInfo = document.getElementById("error");
 
+// Variables for the checkboxes
 const uppercaseCheckbox = document.getElementById("uppercaseCheckbox");
 const lowercaseCheckbox = document.getElementById("lowercaseCheckbox");
 const numbersCheckbox = document.getElementById("numbersCheckbox");
 const symbolsCheckbox = document.getElementById("symbolsCheckbox");
 const separatorsCheckbox = document.getElementById("separatorsCheckbox");
 
+// Variables for the three password-related buttons
 const copyButton = document.getElementById("copy");
 const hideButton = document.getElementById("hide");
 const clearButton = document.getElementById("clear");
 
+// Variables for the "Sections" section in the settings
+const includeButton = document.getElementById("include");
+const excludeButton = document.getElementById("exclude");
+const strengthMeterButton = document.getElementById("strength");
+const footerButton = document.getElementById("footer");
+const includeSection = document.getElementById("includeOptions");
+const footerSection = document.querySelector("footer");
+const allSections = document.getElementsByClassName("variablewidth");
+let include = 1;
+let exclude = 0;
+let strengthMeter = 0;
+let footer = 1;
+let activeSections = 1;
+
+// Other variables
 let hiddenStatus = false;
 let tempResult = "";
-
 let copyButtonState = 0;
 
+// Initializers for localStorage
+if (localStorage.getItem("include")) {
+    include = localStorage.getItem("include");
+    includeButton.classList.remove("active");
+    console.log(activeSections);
+    if (include == 1) {
+        activeSections++;
+        console.log(activeSections);
+        includeButton.classList.add("active");
+        includeSection.style.display = "flex";
+    }
+} else {
+    localStorage.setItem("include", 1);
+    activeSections++;
+}
+
+// if (localStorage.getItem("exclude")) {
+//     exclude = localStorage.getItem("exclude");
+//     if (exclude == 1) {
+//         activeSections++;
+//     }
+// } else {
+//     localStorage.setItem("exclude", 0);
+// }
+
+// if (localStorage.getItem("strengthMeter")) {
+//     strengthMeter = localStorage.getItem("strengthMeter");
+//     if (strengthMeter == 1) {
+//         activeSections++;
+//     }
+// } else {
+//     localStorage.setItem("strengthMeter", 0);
+// }
+
+if (localStorage.getItem("footer")) {
+    footer = localStorage.getItem("footer");
+    footerButton.classList.remove("active");
+    if (footer == 1) {
+        footerButton.classList.add("active");
+        footerSection.style.display = "flex";
+    }
+} else {
+    localStorage.setItem("footer", 1);
+}
+
+for (let i = 0; i < allSections.length; i++) {
+    allSections[i].style.width = `${100 / activeSections}%`;
+}
+
+
+// Function that generates the passwords, after checking if the input values are good
 const generatePasswords = () => {
     let chars = "";
     let length = lengthInput.value - 1;
@@ -86,6 +155,8 @@ document.addEventListener("keypress", (e) => {
     }
 })
 
+
+// Function that clears the result field
 const clearPasswords = () => {
     resultZone.innerHTML = "";
 }
@@ -96,6 +167,8 @@ document.addEventListener("keypress", (e) => {
     }
 })
 
+
+// Functions that show or hide the passwords
 const hidePasswords = () => {
     tempResult = resultZone.innerHTML;
     resultZone.innerHTML = `<i class="fa-sharp fa-solid fa-eye-slash"></i><h3>Passwords hidden</h3>`;
@@ -123,6 +196,9 @@ document.addEventListener("keypress", (e) => {
     }
 })
 
+
+/* Function that removes the unnecessary stuff from the result field and copies
+all passwords to the clipboard */
 const copyPasswords = () => {
     if (resultZone.innerHTML != "") {
     let resultContent = resultZone.innerHTML;
@@ -141,7 +217,7 @@ const changeCopyButton = () => {
         if (resultZone.innerHTML != "") {
             copyButton.style.backgroundColor = "var(--success)";
             copyButton.style.color = "white";
-            copyButton.innerHTML = "Password copied!";
+            copyButton.innerHTML = "Passwords copied!";
         } else {
             copyButton.style.backgroundColor = "var(--error)";
             copyButton.style.color = "white";
@@ -152,7 +228,7 @@ const changeCopyButton = () => {
     } else if (copyButtonState == 1){
         copyButton.style.backgroundColor = "var(--background)";
         copyButton.style.color = "black";
-        copyButton.innerHTML = "Copy Password";
+        copyButton.innerHTML = "Copy Passwords";
         copyButtonState = 0;
     }
 }
@@ -184,5 +260,39 @@ document.addEventListener("keypress", (e) => {
         } else if (settingsStatus == 1) {
             closeSettings();
         }
+    }
+})
+
+includeButton.addEventListener("click", () => {
+    if (include == 1) {
+        includeButton.classList.remove("active");
+        includeSection.style.display = "none";
+        localStorage.setItem("include", 0);
+        activeSections--;
+        include = 0;
+    } else if (include == 0) {
+        includeButton.classList.add("active");
+        includeSection.style.display = "flex";
+        localStorage.setItem("include", 1);
+        activeSections++;
+        include = 1;
+    }
+
+    for (let i = 0; i < allSections.length; i++) {
+        allSections[i].style.width = `${100 / activeSections}%`;
+    }
+})
+
+footerButton.addEventListener("click", () => {
+    if (footer == 1) {
+        footerButton.classList.remove("active");
+        footerSection.style.display = "none";
+        localStorage.setItem("footer", 0);
+        footer = 0;
+    } else if (footer == 0) {
+        footerButton.classList.add("active");
+        footerSection.style.display = "flex";
+        localStorage.setItem("footer", 1);
+        footer = 1;
     }
 })

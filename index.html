@@ -4,6 +4,11 @@
         <title>Password Generator</title>
         <link rel="stylesheet" type="text/css" href="styles.css">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
         <script src="script.js" async></script>
         <script src="https://kit.fontawesome.com/0e8fa86f7b.js" crossorigin="anonymous"></script>
     </head>
@@ -37,7 +42,7 @@
         </nav>
         <main>
             <section id="firstRow">
-                <section id="baseOptions">
+                <section id="baseOptions" class="variablewidth">
                     <h2>Base Settings</h2>
 
                     <label for="quantity">Quantity</label>
@@ -46,7 +51,7 @@
                     <label for="length">Length</label>
                     <input type="number" min="1" max="150" name="length" id="lengthInput" value="15">
                 </section>
-                <section id="includeOptions">
+                <section id="includeOptions" class="variablewidth">
                     <h2>Include</h2>
 
                     <div>
@@ -80,15 +85,15 @@
                 </section> -->
             </section>
             <section id="generate">
-                <button id="generatePassword">Generate password</button>
+                <button id="generatePassword">Generate passwords</button>
                 <p id="error"></p>
             </section>
             <section id="passwords">
-                <h2>Your Password:</h2>
+                <h2>Your Passwords:</h2>
                 <div>
-                    <button id="copy">Copy Password</button>
-                    <button id="hide">Hide Password</button>
-                    <button id="clear">Clear Password</button>
+                    <button id="copy">Copy Passwords</button>
+                    <button id="hide">Hide Passwords</button>
+                    <button id="clear">Clear Passwords</button>
                 </div>
                 <section id="result"></section>
             </section>
@@ -125,7 +130,7 @@
         <section id="settings">
             <div id="settingsContainer">
                 <h2>Settings</h2>
-                <p class="reducedOpacity">These settings will be saved in your browser's storage</p>
+                <p class="reducedOpacity">These settings will be saved in your browser's storage.</p>
                 <div class="settingsGroup">
                     <h3>Language</h3>
                     <div class="buttonGroup">
@@ -138,16 +143,16 @@
                     <!-- <p class="reducedOpacity italic">the coloured buttons represent which sections are shown</p> -->
                     <div class="buttonGroup">
                         <button class="active not-customizable">Base Settings</button>
-                        <button class="active" id="include">Include</button>
+                        <button id="include">Include</button>
                         <button class="not-customizable" id="exclude">Exclude</button>
                         <button class="not-customizable" id="strength">Strength Meter</button>
                         <button class="active not-customizable">Result</button>
-                        <button class="active" id="footer">Footer</button>
+                        <button id="footer">Footer</button>
                     </div>
                 </div>
                 <p class="reducedOpacity">version <strong>0.1</strong></p>
                 <p class="reducedOpacity">
-                    This is just a preview. Most of the stuff won't work, and content may change 
+                    This is just a <strong>preview</strong>. Most of the stuff won't work, and content may change 
                     at any moment.
                 </p>
                 <button id="closeSettings">Close</button>
