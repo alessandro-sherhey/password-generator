@@ -372,6 +372,7 @@ footer button:active {
     padding: 30px;
     border: 2px solid var(--text);
     border-radius: 20px;
+    text-align: center;
 }
 
 #settingsContainer h2 {
