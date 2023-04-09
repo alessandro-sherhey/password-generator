@@ -24,7 +24,7 @@
             </div>
             <div id="nav-right">
                 <a href="https://github.com/alessandro-sherhey/password-generator/issues/new">
-                    <button>
+                    <button id="reportBug">
                         <i class="fa-solid fa-bug"></i>
                         <p class="underline">Report a bug</p>
                     </button>
@@ -41,7 +41,7 @@
                     <h2>Base Settings</h2>
 
                     <label for="quantity">Quantity</label>
-                    <input type="number" min="1" max="99" name="quantity" id="quantityInput" value="25">
+                    <input type="number" min="1" max="99" name="quantity" id="quantityInput" value="1">
 
                     <label for="length">Length</label>
                     <input type="number" min="1" max="150" name="length" id="lengthInput" value="15">
@@ -100,13 +100,13 @@
                     </a>
                 </p>
                 <a href="https://github.com/alessandro-sherhey">
-                    <button>
+                    <button id="github">
                         <i class="fa-brands fa-github"></i>
                         <p class="underline">My GitHub profile</p>
                     </button>
                 </a>
                 <a href="https://github.com/alessandro-sherhey/password-generator">
-                    <button>
+                    <button id="repo">
                         <i class="fa-solid fa-code"></i>
                         <p class="underline">GitHub repository</p>
                     </button>
@@ -114,7 +114,7 @@
             </div>
             <div id="footer-right">
                 <a href="">
-                    <button>
+                    <button id="roadmap">
                         <i class="fa-solid fa-star"></i>
                         <p class="underline">Roadmap</p>
                     </button>
@@ -137,11 +137,11 @@
                     <!-- <p class="reducedOpacity italic">the coloured buttons represent which sections are shown</p> -->
                     <div class="buttonGroup">
                         <button class="active not-customizable">Base Settings</button>
-                        <button class="active">Include</button>
-                        <button class="not-customizable">Exclude</button>
-                        <button class="not-customizable">Strength Meter</button>
-                        <button class="active">Result</button>
-                        <button class="active">Footer</button>
+                        <button class="active" id="include">Include</button>
+                        <button class="not-customizable" id="exclude">Exclude</button>
+                        <button class="not-customizable" id="strength">Strength Meter</button>
+                        <button class="active not-customizable">Result</button>
+                        <button class="active" id="footer">Footer</button>
                     </div>
                 </div>
                 <button id="closeSettings">Close</button>

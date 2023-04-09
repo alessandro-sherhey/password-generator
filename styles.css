@@ -116,6 +116,21 @@ nav button:active {
     transition: 50ms linear;
 }
 
+nav #openSettings i, nav #reportBug i {
+    transition: 500ms ease;
+}
+
+nav #openSettings i:hover {
+    rotate: 90deg;
+    transition: 500ms ease;
+}
+
+nav #reportBug i:hover {
+    scale: 0.7;
+    transition: 500ms ease;
+}
+
+
 main {
     display: flex;
     flex-direction: row;
@@ -292,9 +307,28 @@ footer button:active {
     display: flex;
     align-items: center;
     justify-content: right;
-    width: calc(30% - 20px);
+    width: 30%;
 }
 
+#github i, #repo i, #roadmap i {
+    transition: 1s ease;
+}
+
+#github i:hover {
+    transition: 1s ease;
+    rotate: 360deg;
+    scale: 1.25;
+}
+
+#repo i:hover {
+    transition: 1s ease;
+    transform: rotateY(360deg);
+}
+
+#roadmap i:hover {
+    transition: 1s ease;
+    transform: rotateY(180deg);
+}
 
 #settings {
     display: none;
@@ -390,7 +424,6 @@ footer button:active {
 #settingsContainer button.not-customizable {
     opacity: 0.7;
 }
-
 /* To remove the arrows in the "quantity" and "length" inputs
 Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
