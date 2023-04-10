@@ -317,11 +317,8 @@ footerButton.addEventListener("click", () => {
     }
 })
 
-const changeTheme = () => {
-    root.style.setProperty("--background-dark", "#111");
-    root.style.setProperty("--foreground-dark", "#222");
-}
 
+// Functions for changing the theme of the dark mode
 blueThemeButton.addEventListener("click", () => {
     blueThemeButton.classList.add("active");
     darkGreyThemeButton.classList.remove("active");
