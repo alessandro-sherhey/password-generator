@@ -38,20 +38,23 @@ let strengthMeter = 0;
 let footer = 1;
 let activeSections = 1;
 
+// Dark mode buttons
+const blueThemeButton = document.getElementById("blueButton");
+const darkGreyThemeButton = document.getElementById("darkGreyButton");
+
 // Other variables
 let hiddenStatus = false;
 let tempResult = "";
 let copyButtonState = 0;
 const darkMode = window.matchMedia("(prefers-color-scheme:dark)").matches;
+const root = document.querySelector(":root");
 
 // Initializers for localStorage
 if (localStorage.getItem("include")) {
     include = localStorage.getItem("include");
     includeButton.classList.remove("active");
-    console.log(activeSections);
     if (include == 1) {
         activeSections++;
-        console.log(activeSections);
         includeButton.classList.add("active");
         includeSection.style.display = "flex";
     }
@@ -93,6 +96,17 @@ for (let i = 0; i < allSections.length; i++) {
     allSections[i].style.width = `${100 / activeSections}%`;
 }
 
+
+if (localStorage.getItem("darkModeTheme")) {
+    if (localStorage.getItem("darkModeTheme") == 2) {
+        blueThemeButton.classList.remove("active");
+        darkGreyThemeButton.classList.add("active");
+        root.style.setProperty("--background-dark", "#111");
+        root.style.setProperty("--foreground-dark", "#222");
+    }
+} else {
+    localStorage.setItem("darkModeTheme", 1);
+}
 
 // Function that generates the passwords, after checking if the input values are good
 const generatePasswords = () => {
@@ -301,4 +315,25 @@ footerButton.addEventListener("click", () => {
         localStorage.setItem("footer", 1);
         footer = 1;
     }
+})
+
+const changeTheme = () => {
+    root.style.setProperty("--background-dark", "#111");
+    root.style.setProperty("--foreground-dark", "#222");
+}
+
+blueThemeButton.addEventListener("click", () => {
+    blueThemeButton.classList.add("active");
+    darkGreyThemeButton.classList.remove("active");
+    localStorage.setItem("darkModeTheme", 1);
+    root.style.setProperty("--background-dark", "#001833");
+    root.style.setProperty("--foreground-dark", "#002248");
+})
+
+darkGreyThemeButton.addEventListener("click", () => {
+    blueThemeButton.classList.remove("active");
+    darkGreyThemeButton.classList.add("active");
+    localStorage.setItem("darkModeTheme", 2);
+    root.style.setProperty("--background-dark", "#111");
+    root.style.setProperty("--foreground-dark", "#222");
 })
