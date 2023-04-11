@@ -259,7 +259,7 @@ const changeCopyButton = () => {
             copyButton.style.backgroundColor = "var(--dark-grey)";
             copyButton.style.color = "var(--text-dark)";
         } else {
-            copyButton.style.backgroundColor = "var(--background)";
+            copyButton.style.backgroundColor = "var(--white)";
             copyButton.style.color = "black";
         }
         copyButtonState = 0;
@@ -282,7 +282,7 @@ openSettingsButton.addEventListener("click", openSettings);
 
 const closeSettings = () => {
     settingsBackground.style.display = "none";
-    settingsContainer.style.display = "flex";
+    settingsContainer.style.display = "none";
     settingsStatus = 0;
     body.style.overflow = "scroll";
 }

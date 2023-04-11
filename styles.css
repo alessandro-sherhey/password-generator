@@ -204,7 +204,8 @@ main section {
 
 main button {
     font-size: 1rem;
-    background-color: var(--background);
+    background-color: var(--white);
+    color: var(--text);
     border: 1px solid grey;
     border-radius: 5px;
     margin: 0 5px;
@@ -246,6 +247,7 @@ main #error {
 #passwords div button {
     margin: 5px 10px;
 }
+
 #result {
     display: flex;
     flex-direction: row;
@@ -394,6 +396,7 @@ footer button:active {
     border: 2px solid var(--text);
     border-radius: 20px;
     text-align: center;
+    z-index: 1;
 }
 
 #settingsContainer h2 {
