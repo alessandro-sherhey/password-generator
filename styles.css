@@ -25,7 +25,8 @@ html {
 body {
     background-color: var(--background);
     margin: 0;
-    overflow: hidden;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 h1 {
@@ -68,6 +69,7 @@ nav {
     color: var(--text);
 
     align-items: center;
+    position: fixed;
 }
 
 nav div {
@@ -143,6 +145,7 @@ main {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding: 50px 0 70px 0;
 }
 
 main section {
@@ -233,6 +236,16 @@ main #error {
     margin-top: 20px;
 }
 
+#passwords div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+#passwords div button {
+    margin: 5px 10px;
+}
 #result {
     display: flex;
     flex-direction: row;
@@ -267,10 +280,11 @@ main #error {
 footer {
     display: none;
     height: 50px;
-    width: 100%;
+    width: calc(100% - 40px);
     align-items: center;
+    justify-content: center;
     background-color: var(--foreground);
-    position: absolute;
+    position: fixed;
     top: calc(100vh - 50px);
     padding: 0 20px;
     text-align: center;
@@ -324,6 +338,13 @@ footer button:active {
     align-items: center;
     justify-content: right;
     width: 30%;
+}
+
+#footer-mobile {
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
 }
 
 #github i, #repo i, #roadmap i {
@@ -427,6 +448,9 @@ footer button:active {
 #settingsContainer .buttonGroup {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 
 #settingsContainer button.active {
@@ -511,5 +535,71 @@ input[type=number] {
     #settingsContainer {
         background-color: var(--background-dark);
         border: 2px solid var(--text-dark);
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #github p, #repo p {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #animate {
+        display: none;
+    }
+
+    #settingsContainer {
+        width: 80%;
+    }
+
+    #settingsContainer button {
+        margin: 5px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #footer-left, #footer-right {
+        display: none;
+    }
+
+    #footer-mobile {
+        display: flex;
+    }
+
+    #reportBug p, #openSettings p {
+        display: none;
+    }
+
+    #firstRow {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    #firstRow section {
+        margin: 10px 0;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #reportBug {
+        display: none;
+    }
+
+    #nav-left {
+        width: 70%;
+    }
+
+    #nav-right {
+        width: 30%;
+    }
+
+    #passwords div {
+        flex-direction: column;
+    }
+
+    #result {
+        flex-direction: column;
     }
 }

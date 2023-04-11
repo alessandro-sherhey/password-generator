@@ -48,6 +48,9 @@ let tempResult = "";
 let copyButtonState = 0;
 const darkMode = window.matchMedia("(prefers-color-scheme:dark)").matches;
 const root = document.querySelector(":root");
+const main = document.querySelector("main");
+const body = document.querySelector("body");
+let width = window.innerWidth;
 
 // Initializers for localStorage
 if (localStorage.getItem("include")) {
@@ -92,8 +95,14 @@ if (localStorage.getItem("footer")) {
     localStorage.setItem("footer", 1);
 }
 
-for (let i = 0; i < allSections.length; i++) {
-    allSections[i].style.width = `${100 / activeSections}%`;
+if (width > 700) {
+    for (let i = 0; i < allSections.length; i++) {
+        allSections[i].style.width = `${100 / activeSections}%`;
+    }
+} else {
+    for (let i = 0; i < allSections.length; i++) {
+        allSections[i].style.width = `${100}%`;
+    }
 }
 
 
@@ -107,6 +116,10 @@ if (localStorage.getItem("darkModeTheme")) {
 } else {
     localStorage.setItem("darkModeTheme", 1);
 }
+
+window.addEventListener("resize", () => {
+    width = window.innerWidth;
+});
 
 // Function that generates the passwords, after checking if the input values are good
 const generatePasswords = () => {
@@ -263,6 +276,7 @@ const openSettings = () => {
     settingsBackground.style.display = "flex";
     settingsContainer.style.display = "flex";
     settingsStatus = 1;
+    body.style.overflow = "hidden";
 }
 openSettingsButton.addEventListener("click", openSettings);
 
@@ -270,6 +284,7 @@ const closeSettings = () => {
     settingsBackground.style.display = "none";
     settingsContainer.style.display = "flex";
     settingsStatus = 0;
+    body.style.overflow = "scroll";
 }
 closeSettingsButton.addEventListener("click", closeSettings);
 
@@ -298,8 +313,10 @@ includeButton.addEventListener("click", () => {
         include = 1;
     }
 
-    for (let i = 0; i < allSections.length; i++) {
-        allSections[i].style.width = `${100 / activeSections}%`;
+    if (width > 700) {
+        for (let i = 0; i < allSections.length; i++) {
+            allSections[i].style.width = `${100 / activeSections}%`;
+        }
     }
 })
 
