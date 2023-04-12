@@ -15,4 +15,4 @@ Just go on the website (you can find the link in the "About" section of the repo
 I used HTML, CSS and basic JavaScript to build this website. For the icons I used FontAwesome, and the animations are all built with normal CSS.
 
 ## License
-This website has a MIT license.
+This website has a MIT license. You can look at it from the "LICENSE" file in the repository.

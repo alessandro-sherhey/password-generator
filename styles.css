@@ -300,6 +300,7 @@ footer button {
     display: flex;
     align-items: center;
     background-color: transparent;
+    color: var(--text);
     border: none;
     font-size: 1rem;
     padding: 0;

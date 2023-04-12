@@ -42,6 +42,66 @@ let activeSections = 1;
 const blueThemeButton = document.getElementById("blueButton");
 const darkGreyThemeButton = document.getElementById("darkGreyButton");
 
+// Language variables
+let language = 0; // 0: english, 1: italian
+const englishButton = document.getElementById("englishLanguage");
+const italianButton = document.getElementById("italianLanguage");
+const languageItems = document.getElementsByClassName("languageItem");
+const englishArray = [
+    "Password Generator",
+    "PREVIEW",
+    "Report a bug",
+    "Settings",
+    "Base Settings",
+    "Quantity",
+    "Length",
+    "Include",
+    "Uppercase",
+    "Lowercase",
+    "Numbers",
+    "Symbols",
+    "Separators",
+    "Generate passwords",
+    "Your Passwords:",
+    "Copy passwords",
+    "Hide passwords",
+    "Delete passwords",
+    `Made by
+    <a href="https://alessandro-sherhey.github.io/alessandro-sherhey-website/" class="underline">
+        Alessandro Sherhey
+    </a>`,
+    "GitHub Profile",
+    "GitHub Repository",
+    "Roadmap"
+]
+const italianArray = [
+    "Generatore di password",
+    "ANTEPRIMA",
+    "Segnala un problema",
+    "Impostazioni",
+    "Opzioni di base",
+    "Quantità",
+    "Lunghezza",
+    "Includi",
+    "Maiuscole",
+    "Minuscole",
+    "Numeri",
+    "Simboli",
+    "Separatori",
+    "Genera passwords",
+    "Le tue passwords:",
+    "Copia passwords",
+    "Nascondi passwords",
+    "Elimina passwords",
+    `Fatto da
+    <a href="https://alessandro-sherhey.github.io/alessandro-sherhey-website/" class="underline">
+        Alessandro Sherhey
+    </a>`,
+    "Il mio profilo GitHub",
+    "Repository GitHub",
+    "Traguardi"
+]
+
 // Other variables
 let hiddenStatus = false;
 let tempResult = "";
@@ -95,16 +155,18 @@ if (localStorage.getItem("footer")) {
     localStorage.setItem("footer", 1);
 }
 
-if (width > 700) {
-    for (let i = 0; i < allSections.length; i++) {
-        allSections[i].style.width = `${100 / activeSections}%`;
-    }
-} else {
-    for (let i = 0; i < allSections.length; i++) {
-        allSections[i].style.width = `${100}%`;
+const resizeSections = () => {
+    if (width > 700) {
+        for (let i = 0; i < allSections.length; i++) {
+            allSections[i].style.width = `${100 / activeSections}%`;
+        }
+    } else {
+        for (let i = 0; i < allSections.length; i++) {
+            allSections[i].style.width = `100%`;
+        }
     }
 }
-
+resizeSections();
 
 if (localStorage.getItem("darkModeTheme")) {
     if (localStorage.getItem("darkModeTheme") == 2) {
@@ -119,7 +181,24 @@ if (localStorage.getItem("darkModeTheme")) {
 
 window.addEventListener("resize", () => {
     width = window.innerWidth;
+    footerSection.style.top = "calc(100vh - 50px)";
+    resizeSections();
 });
+
+
+if(localStorage.getItem("language")) {
+    if (localStorage.getItem("language") == 1) {
+        italianButton.classList.add("active");
+        englishButton.classList.remove("active");
+        localStorage.setItem("language", 1);
+        
+        for (let i = 0; i < languageItems.length; i++) {
+            languageItems[i].innerHTML = italianArray[i];
+        }
+    }
+} else {
+    localStorage.setItem("language", 0);
+}
 
 // Function that generates the passwords, after checking if the input values are good
 const generatePasswords = () => {
@@ -284,7 +363,7 @@ const closeSettings = () => {
     settingsBackground.style.display = "none";
     settingsContainer.style.display = "none";
     settingsStatus = 0;
-    body.style.overflow = "scroll";
+    body.style.overflow = "none";
 }
 closeSettingsButton.addEventListener("click", closeSettings);
 
@@ -350,4 +429,26 @@ darkGreyThemeButton.addEventListener("click", () => {
     localStorage.setItem("darkModeTheme", 2);
     root.style.setProperty("--background-dark", "#111");
     root.style.setProperty("--foreground-dark", "#222");
+})
+
+
+// Functions for changing the language
+englishButton.addEventListener("click", () => {
+    italianButton.classList.remove("active");
+    englishButton.classList.add("active");
+    localStorage.setItem("language", 0);
+
+    for (let i = 0; i < languageItems.length; i++) {
+        languageItems[i].innerHTML = englishArray[i];
+    }
+})
+
+italianButton.addEventListener("click", () => {
+    italianButton.classList.add("active");
+    englishButton.classList.remove("active");
+    localStorage.setItem("language", 1);
+    
+    for (let i = 0; i < languageItems.length; i++) {
+        languageItems[i].innerHTML = italianArray[i];
+    }
 })
