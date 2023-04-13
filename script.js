@@ -72,7 +72,31 @@ const englishArray = [
     </a>`,
     "GitHub Profile",
     "GitHub Repository",
-    "Roadmap"
+    "Roadmap",
+    "Settings",
+    "These settings will be saved in your browser's storage.",
+    "Language",
+    "English",
+    "Italian",
+    "Sections",
+    "Base Settings",
+    "Include",
+    "Exclude",
+    "Strength Meter",
+    "Result",
+    "Footer",
+    "Dark Mode Theme",
+    "Blue",
+    "Dark Grey",
+    "Default Values",
+    "Standard",
+    "Multiple passwords",
+    "Last used",
+    "Custom",
+    "version <strong>0.7</strong>",
+    "This is just a <strong>preview</strong>. Most of the stuff won't work, and content may change at any moment.",
+    "Some buttons aren't working? That's normal. Those functions are coming later!",
+    "Close"
 ]
 const italianArray = [
     "Generatore di password",
@@ -99,7 +123,31 @@ const italianArray = [
     </a>`,
     "Il mio profilo GitHub",
     "Repository GitHub",
-    "Traguardi"
+    "Traguardi",
+    "Impostazioni",
+    "Queste impostazioni saranno salvate nella memoria del tuo browser.",
+    "Lingua",
+    "Inglese",
+    "Italiano",
+    "Sezioni",
+    "Impostazioni di base",
+    "Includi",
+    "Escludi",
+    "Sicurezza",
+    "Risultato",
+    "Footer",
+    "Tema modalità scura",
+    "Blu",
+    "Grigio scuro",
+    "Valori prefefiniti",
+    "Standard",
+    "Password multiple",
+    "Ultimi usati",
+    "Personalizzato",
+    "versione <strong>0.7</strong>",
+    "Questa è solo un'<strong>anteprima</strong>. La maggior parte delle cose non funzionerà, e il contenuto potrebbe cambiare in ogni momento.",
+    "Alcuni pulsanti non funzionano? E' normale. Quelle funzioni arriveranno in futuro!",
+    "Chiudi"
 ]
 
 // Other variables
@@ -324,16 +372,26 @@ const changeCopyButton = () => {
         if (resultZone.innerHTML != "") {
             copyButton.style.backgroundColor = "var(--success)";
             copyButton.style.color = "white";
-            copyButton.innerHTML = "Passwords copied!";
+            if (language == 0) {
+                copyButton.innerHTML = "Passwords copied!";
+            } else if (language == 1) {
+                copyButton.innerHTML = "Password copiate!";
+            }
         } else {
             copyButton.style.backgroundColor = "var(--error)";
             copyButton.style.color = "white";
-            copyButton.innerHTML = "Nothing to copy!";
+            if (language == 0) {
+                copyButton.innerHTML = "Nothing to copy!";
+            } else if (language == 1) {
+                copyButton.innerHTML = "Nulla da copiare!";
+            }
         }
         copyButtonState = 1;
         setTimeout(changeCopyButton, 2000);
     } else if (copyButtonState == 1){
+        if (language == 0) {
         copyButton.innerHTML = "Copy Passwords";
+        } else if (language == 1) 
         if (darkMode == true) {
             copyButton.style.backgroundColor = "var(--dark-grey)";
             copyButton.style.color = "var(--text-dark)";
@@ -437,6 +495,7 @@ englishButton.addEventListener("click", () => {
     italianButton.classList.remove("active");
     englishButton.classList.add("active");
     localStorage.setItem("language", 0);
+    language = 0;
 
     for (let i = 0; i < languageItems.length; i++) {
         languageItems[i].innerHTML = englishArray[i];
@@ -447,6 +506,7 @@ italianButton.addEventListener("click", () => {
     italianButton.classList.add("active");
     englishButton.classList.remove("active");
     localStorage.setItem("language", 1);
+    language = 1;
     
     for (let i = 0; i < languageItems.length; i++) {
         languageItems[i].innerHTML = italianArray[i];
