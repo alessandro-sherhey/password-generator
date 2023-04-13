@@ -495,8 +495,9 @@ document.addEventListener("keypress", (e) => {
 const openSettings = () => {
     settingsBackground.style.display = "flex";
     settingsContainer.style.display = "flex";
+    window.scroll(0, 0);
     settingsStatus = 1;
-    body.style.overflow = "hidden";
+    body.style.overflowY = "hidden";
 }
 openSettingsButton.addEventListener("click", openSettings);
 
@@ -504,7 +505,7 @@ const closeSettings = () => {
     settingsBackground.style.display = "none";
     settingsContainer.style.display = "none";
     settingsStatus = 0;
-    body.style.overflow = "none";
+    body.style.overflowY = "auto";
 }
 closeSettingsButton.addEventListener("click", closeSettings);
 
