@@ -494,8 +494,9 @@ document.addEventListener("keypress", (e) => {
 
 const openSettings = () => {
     settingsBackground.style.display = "flex";
-    settingsContainer.style.display = "flex";
+    settingsContainer.style.display = "block";
     window.scroll(0, 0);
+    settingsContainer.scroll(0, 0);
     settingsStatus = 1;
     body.style.overflowY = "hidden";
 }
