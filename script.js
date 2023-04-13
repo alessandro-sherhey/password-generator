@@ -150,6 +150,16 @@ const italianArray = [
     "Chiudi"
 ]
 
+// Default Values Variables
+const standardValuesButton = document.getElementById("standardValues");
+const multiplePasswordsValuesButton = document.getElementById("multiplePasswordsValues");
+const lastUsedValuesButton = document.getElementById("lastUsedValues");
+const customValuesButton = document.getElementById("customValues");
+let defaultValues = 1; // standard: 1, multiple: 2, lastused: 3, custom: 4
+let values = [0, 0]; // quantity, length
+let lastUsedValues = [0, 0];
+let customValues = [0, 0];
+
 // Other variables
 let hiddenStatus = false;
 let tempResult = "";
@@ -203,6 +213,86 @@ if (localStorage.getItem("footer")) {
     localStorage.setItem("footer", 1);
 }
 
+
+
+if (localStorage.getItem("darkModeTheme")) {
+    if (localStorage.getItem("darkModeTheme") == 2) {
+        blueThemeButton.classList.remove("active");
+        darkGreyThemeButton.classList.add("active");
+        root.style.setProperty("--background-dark", "#111");
+        root.style.setProperty("--foreground-dark", "#222");
+    }
+} else {
+    localStorage.setItem("darkModeTheme", 1);
+}
+
+if(localStorage.getItem("language")) {
+    if (localStorage.getItem("language") == 1) {
+        italianButton.classList.add("active");
+        englishButton.classList.remove("active");
+        localStorage.setItem("language", 1);
+        language = 1;
+        
+        for (let i = 0; i < languageItems.length; i++) {
+            languageItems[i].innerHTML = italianArray[i];
+        }
+    }
+} else {
+    localStorage.setItem("language", 0);
+}
+
+if (localStorage.getItem("defaultValues")) {
+    if (localStorage.getItem("defaultValues") == 1) {
+        standardValuesButton.classList.add("active");
+        multiplePasswordsValuesButton.classList.remove("active");
+        lastUsedValuesButton.classList.remove("active");
+        customValuesButton.classList.remove("active");
+        defaultValues = 1;
+        values = [1, 15];
+
+    } else if (localStorage.getItem("defaultValues") == 2) {
+        standardValuesButton.classList.remove("active");
+        multiplePasswordsValuesButton.classList.add("active");
+        lastUsedValuesButton.classList.remove("active");
+        customValuesButton.classList.remove("active");
+        defaultValues = 2;
+        values = [10, 15];
+
+    } else if (localStorage.getItem("defaultValues") == 3) {
+        standardValuesButton.classList.remove("active");
+        multiplePasswordsValuesButton.classList.remove("active");
+        lastUsedValuesButton.classList.add("active");
+        customValuesButton.classList.remove("active");
+        defaultValues = 3;
+
+        if (localStorage.getItem("lastUsedQuantity")) {
+            quantityInput.value = localStorage.getItem("lastUsedQuantity");
+            values[0] = localStorage.getItem("lastUsedQuantity")
+        } else {
+            localStorage.setItem("lastUsedQuantity", 0);
+        }
+
+        if (localStorage.getItem("lastUsedLength")) {
+            lengthInput.value = localStorage.getItem("lastUsedLength");
+            values[1] = localStorage.getItem("lastUsedLength");
+        } else {
+            localStorage.setItem("lastUsedLength", 0);
+        }
+
+    } else if (localStorage.getItem("defaultValues" == 4)) {
+        standardValuesButton.classList.remove("active");
+        multiplePasswordsValuesButton.classList.remove("active");
+        lastUsedValuesButton.classList.remove("active");
+        customValuesButton.classList.add("active");
+        defaultValues = 4;
+        values[0] = customValues[0];
+        values[1] = customValues[1];
+    }
+} else {
+    localStorage.setItem("defaultValues", 1);
+}
+
+// Fix for the bug where the webpage would load with sections at 50% width
 const resizeSections = () => {
     if (width > 700) {
         for (let i = 0; i < allSections.length; i++) {
@@ -216,37 +306,12 @@ const resizeSections = () => {
 }
 resizeSections();
 
-if (localStorage.getItem("darkModeTheme")) {
-    if (localStorage.getItem("darkModeTheme") == 2) {
-        blueThemeButton.classList.remove("active");
-        darkGreyThemeButton.classList.add("active");
-        root.style.setProperty("--background-dark", "#111");
-        root.style.setProperty("--foreground-dark", "#222");
-    }
-} else {
-    localStorage.setItem("darkModeTheme", 1);
-}
-
 window.addEventListener("resize", () => {
     width = window.innerWidth;
     footerSection.style.top = "calc(100vh - 50px)";
     resizeSections();
 });
 
-
-if(localStorage.getItem("language")) {
-    if (localStorage.getItem("language") == 1) {
-        italianButton.classList.add("active");
-        englishButton.classList.remove("active");
-        localStorage.setItem("language", 1);
-        
-        for (let i = 0; i < languageItems.length; i++) {
-            languageItems[i].innerHTML = italianArray[i];
-        }
-    }
-} else {
-    localStorage.setItem("language", 0);
-}
 
 // Function that generates the passwords, after checking if the input values are good
 const generatePasswords = () => {
@@ -276,6 +341,10 @@ const generatePasswords = () => {
             }
             
             resultZone.innerHTML = "";
+            values[0] = quantity;
+            values[1] = quantity;
+            lastUsedValues[0] = quantity;
+            lastUsedValues[1] = length;
             
             while (passwordCount < quantity) {
                 for (let i = 1; i <= length + 1; i++) {
@@ -292,14 +361,26 @@ const generatePasswords = () => {
             }
         } else {
             lengthInput.style.border = "2px solid red";
-            error.innerHTML = "Insert a length value between 1 and 149.";
+            if (language == 0) {
+                error.innerHTML = "Insert a length value between 1 and 149.";
+            } else if (language == 1) {
+                error.innerHTML = "Inserisci una lunghezza tra 1 e 149.";
+            }
         }
     } else {
         quantityInput.style.border = "2px solid red";
-        error.innerHTML = "Insert a quantity value between 1 and 99.";
+        if (language == 0) {
+            error.innerHTML = "Insert a quantity value between 1 and 99.";
+        } else if (language == 1) {
+            error.innerHTML = "Inserisci una quantità tra 1 e 99.";
+        }
         if (length < 1 || length > 149) {
             lengthInput.style.border = "2px solid red";
-            error.innerHTML = "Insert a quantity value between 1 and 99, and a length value between 1 and 149.";
+            if (language == 0) {
+                error.innerHTML = "Insert a quantity value between 1 and 99, and a length value between 1 and 149.";
+            } else if (language == 1) {
+                error.innerHTML = "Inserisci una quantità tra 1 e 99, e una lunghezza tra 1 e 149.";
+            }
         }
     }
 }
@@ -513,4 +594,33 @@ italianButton.addEventListener("click", () => {
     for (let i = 0; i < languageItems.length; i++) {
         languageItems[i].innerHTML = italianArray[i];
     }
+})
+
+
+standardValuesButton.addEventListener("click", () => {
+    standardValuesButton.classList.add("active");
+    multiplePasswordsValuesButton.classList.remove("active");
+    lastUsedValuesButton.classList.remove("active");
+    customValuesButton.classList.remove("active");
+})
+
+multiplePasswordsValuesButton.addEventListener("click", () => {
+    standardValuesButton.classList.remove("active");
+    multiplePasswordsValuesButton.classList.add("active");
+    lastUsedValuesButton.classList.remove("active");
+    customValuesButton.classList.remove("active");
+})
+
+lastUsedValuesButton.addEventListener("click", () => {
+    standardValuesButton.classList.remove("active");
+    multiplePasswordsValuesButton.classList.remove("active");
+    lastUsedValuesButton.classList.add("active");
+    customValuesButton.classList.remove("active");
+})
+
+customValuesButton.addEventListener("click", () => {
+    standardValuesButton.classList.remove("active");
+    multiplePasswordsValuesButton.classList.remove("active");
+    lastUsedValuesButton.classList.remove("active");
+    customValuesButton.classList.add("active");
 })
