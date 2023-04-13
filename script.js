@@ -93,7 +93,7 @@ const englishArray = [
     "Multiple passwords",
     "Last used",
     "Custom",
-    "version <strong>0.7</strong>",
+    "version <strong>0.8</strong>",
     "This is just a <strong>preview</strong>. Most of the stuff won't work, and content may change at any moment.",
     "Some buttons aren't working? That's normal. Those functions are coming later!",
     "Close"
@@ -144,7 +144,7 @@ const italianArray = [
     "Password multiple",
     "Ultimi usati",
     "Personalizzato",
-    "versione <strong>0.7</strong>",
+    "versione <strong>0.8</strong>",
     "Questa è solo un'<strong>anteprima</strong>. La maggior parte delle cose non funzionerà, e il contenuto potrebbe cambiare in ogni momento.",
     "Alcuni pulsanti non funzionano? E' normale. Quelle funzioni arriveranno in futuro!",
     "Chiudi"
@@ -390,8 +390,10 @@ const changeCopyButton = () => {
         setTimeout(changeCopyButton, 2000);
     } else if (copyButtonState == 1){
         if (language == 0) {
-        copyButton.innerHTML = "Copy Passwords";
-        } else if (language == 1) 
+            copyButton.innerHTML = "Copy Passwords";
+        } else if (language == 1) {
+            copyButton.innerHTML = "Copia Password";
+        }
         if (darkMode == true) {
             copyButton.style.backgroundColor = "var(--dark-grey)";
             copyButton.style.color = "var(--text-dark)";
