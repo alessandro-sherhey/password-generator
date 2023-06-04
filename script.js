@@ -308,7 +308,7 @@ resizeSections();
 
 window.addEventListener("resize", () => {
     width = window.innerWidth;
-    footerSection.style.top = "calc(100vh - 50px)";
+    // footerSection.style.top = "calc(100vh - 50px)";
     resizeSections();
 });
 
