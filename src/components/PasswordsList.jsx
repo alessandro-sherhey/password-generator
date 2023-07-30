@@ -1,27 +1,34 @@
 import React, { useEffect } from 'react'
 import PasswordBox from './PasswordBox'
 import { useAnimate, stagger, AnimatePresence } from 'framer-motion'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from '../styles/styles'
+import { EyeInvisibleOutlined } from '@ant-design/icons'
 
 const PasswordsList = ({ passwords }) => {
     const [scope, animate] = useAnimate();
+    const hidden = useSelector(state => state.options.hidden)
 
     useEffect(() => {
         if (passwords.length > 0) {
             animate("*", {opacity: [0, 1]}, {delay: stagger(.05)})
         }
-    }, [passwords])
+    }, [passwords, hidden])
 
     return (
         <section
-            className='flex justify-around flex-wrap px-8 mt-7'
+            className='flex flex-col text-center px-8 my-7'
             ref={scope}
         >
-            {
+            {   !hidden
+                ?
                 passwords.map(password => (
                     <PasswordBox password={password} />
-                )) 
+                ))
+                :
+                <EyeInvisibleOutlined
+                    className='text-5xl sm:text-7xl text-[#bbb]'
+                />
             }
         </section>
     )

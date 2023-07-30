@@ -31,7 +31,7 @@ const GeneralOptions = () => {
                 value={quantity}
                 onChange={changeQuantity}
                 max={100}
-                className="mt-1 max-w-[100px] text-lg"
+                className="mt-1 max-w-[100px] text-lg text-center"
             />
 
             <div className="mt-3" />
@@ -42,7 +42,7 @@ const GeneralOptions = () => {
                 value={length}
                 onChange={changeLength}
                 max={150}
-                className="mt-1 max-w-[100px] text-lg"
+                className="mt-1 max-w-[100px] text-lg text-center"
             />
         </section>
     )

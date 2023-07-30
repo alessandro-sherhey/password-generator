@@ -13,7 +13,8 @@ const optionsSlice = createSlice({
             numbers: true,
             symbols: true,
             separators: false
-        }
+        },
+        hidden: false
     },
     reducers: {
         setQuantity: (state, action) => { state.general.quantity = action.payload },
@@ -24,8 +25,10 @@ const optionsSlice = createSlice({
         setNumbers: (state, action) => { state.include.numbers = action.payload },
         setSymbols: (state, action) => { state.include.symbols = action.payload },
         setSeparators: (state, action) => { state.include.separators = action.payload },
+
+        setHidden: (state, action) => { state.hidden = action.payload }
     }
 })
 
-export const { setQuantity, setLength, setUppercase, setLowercase, setNumbers, setSymbols, setSeparators } = optionsSlice.actions;
+export const { setQuantity, setLength, setUppercase, setLowercase, setNumbers, setSymbols, setSeparators, setHidden } = optionsSlice.actions;
 export default optionsSlice.reducer
