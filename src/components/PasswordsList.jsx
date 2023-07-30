@@ -1,8 +1,15 @@
 import React from 'react'
+import PasswordBox from './PasswordBox'
 
-const PasswordsList = () => {
+const PasswordsList = ({ passwords }) => {
     return (
-        <div>PasswordsList</div>
+        <section>
+            {
+                passwords.map(password => (
+                    <PasswordBox password={password} />
+                )) 
+            }
+        </section>
     )
 }
 

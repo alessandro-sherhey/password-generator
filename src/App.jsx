@@ -26,7 +26,7 @@ const App = () => {
     })
 
     dispatch({
-      type: 'passwords/generate',
+      type: 'passwords/add',
       payload: passwords,
     })
   }
