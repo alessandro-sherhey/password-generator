@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import './App.css'
+import './styles/App.css'
 
 const App = () => {
   return (
     <>
-      
+      <h1 className='text-black si'>Sus</h1>
     </>
   )
 }
