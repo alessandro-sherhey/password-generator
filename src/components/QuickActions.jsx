@@ -70,6 +70,7 @@ const QuickActions = () => {
                 icon={<DeleteOutlined />}
                 className={`${styles.button} bg-bg-1 mr-0 mt-3 sm:mr-3 dark:bg-[#141414]`}
                 onClick={clearPasswords}
+                danger
             >Clear Passwords</Button>
         </div>
     )
