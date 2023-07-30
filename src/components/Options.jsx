@@ -5,14 +5,8 @@ import { useAnimate, stagger } from 'framer-motion'
 import styles from '../styles/styles';
 
 const Options = () => {
-    const [scope, animate] = useAnimate();
-
-    useEffect(() => {
-        animate("section", {opacity: [0, 1]}, {delay: stagger(0.5)})
-    }, [animate])
-
     return (
-        <div ref={scope} className='flex justify-around align-middle flex-wrap'>
+        <div className='flex justify-around align-middle flex-wrap w-full'>
             <GeneralOptions />
             <IncludeOptions />
         </div>
