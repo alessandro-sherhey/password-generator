@@ -7,9 +7,8 @@ import { motion } from "framer-motion"
 const Navbar = () => {
   return (
     <motion.div
-      initial="hidden"
       animate={{
-        y: [0, 70]
+        y: [0, 62]
       }}
       transition={{
         duration: .5,
@@ -19,7 +18,7 @@ const Navbar = () => {
       <nav 
         className={`
           ${styles.paddingX} 
-          py-[15px] w-full flex justify-between align-middle bg-bg-2 relative top-[-70px]
+          py-[15px] w-full flex justify-between align-middle bg-bg-2 relative top-[-62px]
         `}
       >
           <div className="flex items-center">

@@ -12,7 +12,7 @@ const Options = () => {
     }, [animate])
 
     return (
-        <div ref={scope} className='flex justify-around align-middle flex-wrap mt-6'>
+        <div ref={scope} className='flex justify-around align-middle flex-wrap'>
             <GeneralOptions />
             <IncludeOptions />
         </div>
