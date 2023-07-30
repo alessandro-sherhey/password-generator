@@ -23,7 +23,7 @@ const Navbar = () => {
         `}
       >
           <div className="flex items-center">
-              <h1 className="text-2xl font-bold blue-text-gradient">Password Generator</h1>
+              <h1 className="text-2xl font-bold text-primary">Password Generator</h1>
           </div>
           <div>
               <Link
