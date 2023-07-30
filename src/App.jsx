@@ -4,7 +4,7 @@ import './styles/App.css'
 const App = () => {
   return (
     <>
-      <h1 className='text-black si'>Sus</h1>
+      <h1 className='text-4xl font-bold'>Sus</h1>
     </>
   )
 }
