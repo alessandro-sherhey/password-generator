@@ -21,6 +21,7 @@ const Navbar = () => {
           ${styles.paddingX} 
           py-[15px] w-full flex flex-col justify-between align-middle bg-bg-2 relative top-[-62px]
           lg:flex-row
+          dark:bg-dark-bg-2
         `}
       >
           <div className="flex items-center">
@@ -33,7 +34,7 @@ const Navbar = () => {
               >
                 <Button
                   icon={<SettingOutlined />}
-                  className={`${styles.button} bg-bg-1`}
+                  className={`${styles.button} bg-bg-1 dark:bg-[#141414]`}
                 >Settings</Button>
               </Link>
           </div>

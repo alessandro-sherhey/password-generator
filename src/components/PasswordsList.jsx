@@ -27,7 +27,7 @@ const PasswordsList = ({ passwords }) => {
                 ))
                 :
                 <EyeInvisibleOutlined
-                    className='text-5xl sm:text-7xl text-[#bbb]'
+                    className='text-5xl sm:text-7xl text-[#bbb] dark:text-[#444]'
                 />
             }
         </section>

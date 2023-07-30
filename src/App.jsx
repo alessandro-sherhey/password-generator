@@ -1,5 +1,5 @@
-import { useEffect } from "react"
-import { Button } from "antd"
+import { useEffect, useState } from "react"
+import { Button, ConfigProvider, theme } from "antd"
 import Navbar from "./components/Navbar"
 import Options from "./components/Options"
 import { KeyOutlined } from "@ant-design/icons"
@@ -10,16 +10,32 @@ import PasswordsList from "./components/PasswordsList"
 import QuickActions from "./components/QuickActions"
 
 const App = () => {
-  const dispatch = useDispatch();
   const [scope, animate] = useAnimate();
+  useEffect(() => {
+    animate("*:not(input[type='checkbox'])", {opacity: [0, 1]}, {delay: stagger(.025)})
+  }, [animate])
 
+  const [isDark, setIsDark] = useState();
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+
+    const checkQuery = () => {
+      const matches = mediaQuery.matches;
+      setIsDark(matches)
+    }
+    checkQuery();
+
+    mediaQuery.addEventListener("change", checkQuery)
+
+    return () => {
+      mediaQuery.removeEventListener("change", checkQuery)
+    }
+  })
+
+  const dispatch = useDispatch();
   const passwords = useSelector(state => state.passwords)
   const { quantity, length } = useSelector(state => state.options.general);
   const { uppercase, lowercase, numbers, symbols, separators } = useSelector(state => state.options.include);
-
-  useEffect(() => {
-      animate("*:not(input[type='checkbox'])", {opacity: [0, 1]}, {delay: stagger(.025)})
-  }, [animate])
 
   const addPasswords = () => {
     const passwords = generatePassword({
@@ -33,9 +49,20 @@ const App = () => {
   }
 
   return (
-    <>
+    <ConfigProvider
+      theme={{
+        algorithm: isDark ? theme.darkAlgorithm : null
+      }}
+    >
       <Navbar />
-      <main className="flex flex-col items-center w-full" ref={scope}>
+      <main 
+        className="
+          flex flex-col items-center w-[100vw]
+          dark:bg-dark-bg-1
+          dark:text-[#fff]
+        "
+        ref={scope}
+      >
         <Options />
         <Button
           type="primary"
@@ -48,7 +75,7 @@ const App = () => {
           passwords={passwords}
         />
       </main>
-    </>
+    </ConfigProvider>
   )
 }
 
