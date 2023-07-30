@@ -4,9 +4,12 @@ const passwordsSlice = createSlice({
     name: 'passwords',
     initialState: [],
     reducers: {
-        generate: (state, action) => {state.push(...action.payload)}
+        generate: (state, action) => {
+            state = [];
+            state.push(...action.payload)
+        }
     }
 })
 
-export const { generate } = passwordsSlice
+export const { generate } = passwordsSlice.actions;
 export default passwordsSlice.reducer
