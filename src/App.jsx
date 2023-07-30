@@ -7,6 +7,7 @@ import { useAnimate, stagger } from "framer-motion"
 import { useSelector, useDispatch } from "react-redux"
 import generatePassword from "./utils/generatePassword"
 import PasswordsList from "./components/PasswordsList"
+import QuickActions from "./components/QuickActions"
 
 const App = () => {
   const dispatch = useDispatch();
@@ -17,7 +18,7 @@ const App = () => {
   const { uppercase, lowercase, numbers, symbols, separators } = useSelector(state => state.options.include);
 
   useEffect(() => {
-      animate("*:not(input[type='checkbox'])", {opacity: [0, 1]}, {delay: stagger(.032)})
+      animate("*:not(input[type='checkbox'])", {opacity: [0, 1]}, {delay: stagger(.025)})
   }, [animate])
 
   const addPasswords = () => {
@@ -42,6 +43,7 @@ const App = () => {
           className="flex items-center bg-primary"
           onClick={addPasswords}
         >Generate passwords</Button>
+        <QuickActions />
         <PasswordsList
           passwords={passwords}
         />

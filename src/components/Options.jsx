@@ -3,6 +3,7 @@ import GeneralOptions from './GeneralOptions'
 import IncludeOptions from './IncludeOptions'
 import { useAnimate, stagger } from 'framer-motion'
 import styles from '../styles/styles';
+import QuickActions from './QuickActions';
 
 const Options = () => {
     return (

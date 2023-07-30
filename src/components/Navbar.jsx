@@ -6,15 +6,6 @@ import { motion } from "framer-motion"
 import { useSelector, useDispatch } from "react-redux"
 
 const Navbar = () => {
-  const dispatch = useDispatch();
-  const hidden = useSelector(state => state.options.hidden);
-  const toggleHidden = e => {
-    dispatch({
-      type: 'options/setHidden',
-      payload: !hidden
-    })
-  }
-
   return (
     <motion.div
       animate={{
@@ -36,24 +27,6 @@ const Navbar = () => {
               <h1 className="text-2xl font-bold text-primary">Password Generator</h1>
           </div>
           <div className="flex">
-              <Button
-                icon={<CopyOutlined />}
-                className={`${styles.button} bg-bg-1 mr-3`}
-              >Copy Passwords</Button>
-              <Button
-                icon={ !hidden ?
-                  <EyeInvisibleOutlined /> :
-                  <EyeOutlined />
-                }
-                className={`${styles.button} bg-bg-1 mr-3`}
-                onClick={toggleHidden}
-              >
-                { !hidden ?
-                  'Hide Passwords' :
-                  'Show Passwords'
-                }
-              </Button>
-
               <Link
                 to="/#/settings"
                 className="flex items-center"
