@@ -76,15 +76,18 @@ const Settings = ({ open, closeSettings }) => {
                 <Button
                     type={include ? 'primary' : 'default'}
                     className={include ? 'bg-primary' : ''}
+                    onClick={setInclude}
                 >Include</Button>
                 <Button
                     type={exclude ? 'primary' : 'default'}
                     className={exclude ? 'bg-primary' : ''}
+                    onClick={setExclude}
                     disabled
                 >Exclude</Button>
                 <Button
                     type={strength ? 'primary' : 'default'}
                     className={strength ? 'bg-primary' : ''}
+                    onClick={setStrength}
                     disabled
                 >Strength Meter</Button>
             </Space.Compact>
