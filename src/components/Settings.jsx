@@ -69,6 +69,7 @@ const Settings = ({ open, closeSettings }) => {
                     type={language === 'italian' ? 'primary' : 'default'}
                     className={language === 'italian' ? 'bg-primary' : ''}
                     onClick={setItalian}
+                    disabled
                 >Italian</Button>
             </Space.Compact>
             <h3 className="text-lg mt-3 mb-1">UI sections</h3>

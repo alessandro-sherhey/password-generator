@@ -48,6 +48,20 @@ const App = () => {
     })
   }
 
+  const [disableGenerateBtn, setDisableGenerateBtn] = useState(false);
+  useEffect(() => {
+    console.log('hey')
+    if (
+      (quantity < 1 || quantity > 100) ||
+      (length < 4 || length > 150) ||
+      (!uppercase && !lowercase && !numbers && !symbols)
+    ) {
+      setDisableGenerateBtn(true)
+    } else {
+      setDisableGenerateBtn(false)
+    }
+  }, [quantity, length, uppercase, lowercase, numbers, symbols])
+
   return (
     <ConfigProvider
       theme={{
@@ -69,7 +83,8 @@ const App = () => {
           icon={<KeyOutlined className="text-lg"/>}
           className="flex items-center bg-primary"
           onClick={addPasswords}
-        >Generate passwords</Button>
+          disabled={disableGenerateBtn}
+        >Generate Passwords</Button>
         <QuickActions />
         <PasswordsList
           passwords={passwords}
