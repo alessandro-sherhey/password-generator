@@ -1,0 +1,15 @@
+{
+    "name": "Password Generator",
+    "short_name": "PWDG",
+    "description": "A simple password generator app.",
+    "start_url": "/",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "/favicon.png",
+            "sizes": "768x768",
+            "type": "image/png"
+        }
+    ],
+    "orientation": "any"
+}

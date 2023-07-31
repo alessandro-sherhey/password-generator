@@ -70,7 +70,8 @@ const App = () => {
       <Navbar />
       <main 
         className="
-          flex flex-col items-center w-[100vw]
+          flex flex-col items-center w-[100vw] 
+          overflow-x-hidden
           dark:bg-dark-bg-1
           dark:text-[#fff]
         "
