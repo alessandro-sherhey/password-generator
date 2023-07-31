@@ -71,8 +71,7 @@ const App = () => {
       <main 
         className="
           flex flex-col items-center w-[100vw] 
-          overflow-x-hidden
-          dark:bg-dark-bg-1
+          overflow-x-hidden bg-[transparent]
           dark:text-[#fff]
         "
         ref={scope}

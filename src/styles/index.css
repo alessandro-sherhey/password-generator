@@ -28,6 +28,9 @@
   }
 }
 
-button.ant-btn[type="primary"] {
-  background-color: blue;
+/* Black background for OLED displays */
+@media (color-gamut: p3) {
+  :root {
+    background-color: black;
+  }
 }
