@@ -1,11 +1,7 @@
-import { useEffect } from 'react';
 import GeneralOptions from './GeneralOptions'
 import IncludeOptions from './IncludeOptions'
-import { useAnimate, stagger } from 'framer-motion'
-import styles from '../styles/styles';
-import QuickActions from './QuickActions';
 
-const Options = () => {
+const OptionsWrapper = () => {
     return (
         <div className='flex justify-around align-middle flex-wrap w-full'>
             <GeneralOptions />
@@ -14,4 +10,4 @@ const Options = () => {
     )
 }
 
-export default Options;
+export default OptionsWrapper;
