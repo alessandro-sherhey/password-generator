@@ -39,7 +39,7 @@ const QuickActions = () => {
                 type: 'passwords/add',
                 payload: []
             })
-            messageApi.info('Passwords cleared!')
+            messageApi.success('Passwords cleared!')
         } else {
             messageApi.info('There already are no passwords.')
         }
