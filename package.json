@@ -2,7 +2,7 @@
   "name": "password-generator",
   "private": true,
   "version": "0.9",
-  "homepage": ".",
+  "homepage": "https://alessandro-sherhey.github.io/password-generator/",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
