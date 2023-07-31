@@ -27,3 +27,7 @@
     background-color: rgb(10, 10, 10);
   }
 }
+
+button.ant-btn[type="primary"] {
+  background-color: blue;
+}
