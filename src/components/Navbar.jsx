@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom"
 import styles from "../styles/styles"
 import { Button } from "antd"
 import { CopyOutlined, EyeOutlined, EyeInvisibleOutlined, KeyOutlined, SettingOutlined } from "@ant-design/icons"
@@ -56,10 +55,6 @@ const Navbar = () => {
               </h1>
           </div>
           <div className="flex">
-              <Link
-                to="/#/settings"
-                className="flex items-center"
-              >
                 <Button
                   icon={<SettingOutlined className=""/>}
                   className={`
@@ -75,7 +70,6 @@ const Navbar = () => {
                   open={isSettingsOpen} 
                   closeSettings={closeSettings}
                 />
-              </Link>
           </div>
       </nav>
     </motion.div>

@@ -1,6 +1,5 @@
 import { Modal, Button, Space } from "antd"
 import { useSelector, useDispatch } from "react-redux"
-import { Link } from "react-router-dom"
 
 const Settings = ({ open, closeSettings }) => {
     const dispatch = useDispatch()
@@ -45,16 +44,14 @@ const Settings = ({ open, closeSettings }) => {
             open={open}
             onOk={closeSettings}
             footer={[
-                <Link to="/">
-                    <Button
-                        key="close"
-                        type="primary"
-                        onClick={closeSettings}
-                        className="bg-primary"
-                    >
-                        Close
-                    </Button>
-                </Link>
+                <Button
+                    key="close"
+                    type="primary"
+                    onClick={closeSettings}
+                    className="bg-primary"
+                >
+                    Close
+                </Button>
             ]}
         >
             <h2 className="text-2xl font-bold">Settings</h2>
