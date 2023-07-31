@@ -23,7 +23,7 @@ const PasswordsList = ({ passwords }) => {
             {   !hidden
                 ?
                 passwords.map(password => (
-                    <PasswordBox password={password} />
+                    <PasswordBox password={password} key={crypto.randomUUID()} />
                 ))
                 :
                 <EyeInvisibleOutlined
