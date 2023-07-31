@@ -5,8 +5,14 @@ This is a website that generates random passwords based on parameters set by the
 I also made it because I think it can be useful to some people, even though you'll find the same stuff in your password manager.
 
 ## Features
-You can generate up to 100 passwords at a time with a maximum length of 150 characters. It's also possible to include or exclude uppercase/lowercase characters, numbers, symbols, and add separators (like an hyphen) every 5 characters. I'm planning to add more advanced features to customize your passwords, like choosing the separator character.
-~~In the settings you can choose what sections to show or hide, such as the footer, the language and the default values for the "Quantity" and "Length" inputs.~~
+* Generate up to 100 passwords at once
+* Generate passwords long up to 150 characters
+* Customize your passwords with options
+* Copy all the passwords to the clipboard
+* Hide the passwords for privacy
+* Clear all the passwords with one click
+* ~~Choose between English and Italian language~~ *(coming soon!)*
+* ~~Customize what to show in the UI~~ *(coming soon!)*
 
 ## How to use
 Just go on the website (you can find the link in the "About" section of the repository) and check out the features! :D
