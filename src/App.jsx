@@ -3,7 +3,7 @@ import { ConfigProvider, theme } from "antd"
 import Navbar from "./components/Navbar"
 import OptionsWrapper from "./components/options/OptionsWrapper"
 import { useAnimate, stagger } from "framer-motion"
-import PasswordsList from "./components/PasswordsList"
+import PasswordsList from "./components/passwords/PasswordsList"
 import QuickActions from "./components/actions/QuickActions"
 import GenerateButton from "./components/actions/GenerateButton"
 

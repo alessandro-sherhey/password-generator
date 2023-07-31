@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import PasswordBox from './PasswordBox'
-import { useAnimate, stagger, AnimatePresence } from 'framer-motion'
-import { useDispatch, useSelector } from 'react-redux'
-import styles from '../styles/styles'
+import { useAnimate, stagger } from 'framer-motion'
+import { useSelector } from 'react-redux'
 import { EyeInvisibleOutlined } from '@ant-design/icons'
 
 const PasswordsList = () => {
