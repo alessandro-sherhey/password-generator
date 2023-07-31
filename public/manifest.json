@@ -2,7 +2,7 @@
     "name": "Password Generator",
     "short_name": "PWDG",
     "description": "A simple password generator app.",
-    "start_url": "/",
+    "start_url": "https://alessandro-sherhey.github.io/password-generator/",
     "display": "standalone",
     "icons": [
         {
