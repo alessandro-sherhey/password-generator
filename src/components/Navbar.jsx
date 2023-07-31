@@ -5,8 +5,17 @@ import { CopyOutlined, EyeOutlined, EyeInvisibleOutlined, KeyOutlined, SettingOu
 import { motion } from "framer-motion"
 import { useSelector, useDispatch } from "react-redux"
 import { useEffect, useState } from "react"
+import Settings from "./Settings"
 
 const Navbar = () => {
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+  const showSettings = () => {
+    setIsSettingsOpen(true);
+  }
+  const closeSettings = () => {
+    setIsSettingsOpen(false);
+  }
+
   const [width, setWidth] = useState(window.innerWidth);
   useEffect(() => {
     const updateWidth = () => {
@@ -19,6 +28,8 @@ const Navbar = () => {
       window.removeEventListener("resize", updateWidth)
     }
   })
+
+
   return (
     <motion.div
       animate={{
@@ -56,9 +67,14 @@ const Navbar = () => {
                   flex justify-center items-center
                   bg-bg-1
                   dark:bg-[#141414]`}
+                  onClick={showSettings}
                 >
                   { width >= 640 && 'Settings' }
                 </Button>
+                <Settings
+                  open={isSettingsOpen} 
+                  closeSettings={closeSettings}
+                />
               </Link>
           </div>
       </nav>
