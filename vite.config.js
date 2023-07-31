@@ -8,4 +8,5 @@ export default defineConfig({
     react(),
     postcss()
   ],
+  base: "https://alessandro-sherhey.github.io/password-generator/"
 })
