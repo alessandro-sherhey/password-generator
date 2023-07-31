@@ -5,9 +5,10 @@ import { useDispatch, useSelector } from 'react-redux'
 import styles from '../styles/styles'
 import { EyeInvisibleOutlined } from '@ant-design/icons'
 
-const PasswordsList = ({ passwords }) => {
+const PasswordsList = () => {
     const [scope, animate] = useAnimate();
     const hidden = useSelector(state => state.options.hidden)
+    const passwords = useSelector(state => state.passwords)
 
     useEffect(() => {
         if (passwords.length > 0) {

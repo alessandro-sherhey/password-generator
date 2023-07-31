@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react"
-import { Button, ConfigProvider, theme } from "antd"
+import { ConfigProvider, theme } from "antd"
 import Navbar from "./components/Navbar"
 import OptionsWrapper from "./components/options/OptionsWrapper"
-import { KeyOutlined } from "@ant-design/icons"
 import { useAnimate, stagger } from "framer-motion"
-import { useSelector, useDispatch } from "react-redux"
 import PasswordsList from "./components/PasswordsList"
 import QuickActions from "./components/actions/QuickActions"
 import GenerateButton from "./components/actions/GenerateButton"
@@ -32,8 +30,6 @@ const App = () => {
     }
   })
 
-  const passwords = useSelector(state => state.passwords)
-
   return (
     <ConfigProvider
       theme={{
@@ -50,12 +46,9 @@ const App = () => {
         ref={scope}
       >
         <OptionsWrapper />
-        <GenerateButton
-        />
+        <GenerateButton />
         <QuickActions />
-        <PasswordsList
-          passwords={passwords}
-        />
+        <PasswordsList />
       </main>
     </ConfigProvider>
   )
