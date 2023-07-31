@@ -30,8 +30,6 @@ const generatePassword = ({
         }
         array.push(password)
     }
-    
-    console.log(array)
     return array;
 }
 

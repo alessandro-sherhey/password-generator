@@ -50,7 +50,6 @@ const App = () => {
 
   const [disableGenerateBtn, setDisableGenerateBtn] = useState(false);
   useEffect(() => {
-    console.log('hey')
     if (
       (quantity < 1 || quantity > 100) ||
       (length < 4 || length > 150) ||
