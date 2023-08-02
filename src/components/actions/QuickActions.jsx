@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Button, message } from 'antd';
 import { CopyOutlined, EyeOutlined, EyeInvisibleOutlined, DeleteOutlined } from '@ant-design/icons';
-import styles from '../styles/styles';
+import styles from '../../styles/styles';
 
 const QuickActions = () => {
     const dispatch = useDispatch();
